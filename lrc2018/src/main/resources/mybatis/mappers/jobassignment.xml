@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="job">
+	<select id="listjob" resultType="Job_Assignment">
+		select * from job_assignment order by space
+	</select>
+	
+	<insert id="insertjob" parameterType="Job_Assignment">
+		insert into job_assignment(space, job_separ_1, job_separ_2, remark) values(#{space},#{job_separ_1},#{job_separ_2},#{remark})
+	</insert>
+	
+	<delete id="deletejob" parameterType="java.lang.Integer">
+		delete from job_assignment where num = #{num}
+	</delete>
+	
+	<update id="updatejob" parameterType="Job_Assignment">
+		update job_assignment set space = #{space}, job_separ_1=#{job_separ_1}, job_separ_2 = #{job_separ_2}, remark = #{remark}
+		where num = #{num}
+	</update>
+	
+	<select id="listspace" resultType="java.lang.String">
+		select distinct space from job_assignment order by space
+	</select>
+	<select id="listsepar1" resultType="Job_Assignment" parameterType="java.lang.String">
+		select * from job_assignment where space = #{space} order by space
+	</select>
+	<select id="listsepar2" resultType="Job_Assignment" parameterType="Job_Assignment">
+		select * from job_assignment where space = #{space} and job_separ_1 = #{job_separ_1} order by space
+	</select>
+	
+	<select id="getjob" resultType="Job_Assignment" parameterType="Job_Assignment">
+		select * from job_assignment where space = #{space} and job_separ_1 = #{job_separ_1} and job_separ_2 =#{job_separ_2} order by space
+	</select>
+	
+</mapper>
