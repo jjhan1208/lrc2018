@@ -47,9 +47,9 @@ public class JSONController {
 	}
 	@RequestMapping(value = "job/changespace", method = RequestMethod.GET)
 	public List<Job_Assignment> changeJob_Level_M(Job_Assignment job_Assingment, Model model) {
-		//System.out.println(job_Assingment);
+		System.out.println(job_Assingment);
 		List<Job_Assignment> list = job_AssignmentDao.listSepar2(job_Assingment);
-		//System.out.println(list);
+		System.out.println(list);
 		return list;
 	}
 	
